@@ -1,6 +1,8 @@
 package com.hospital.hospital_appointment_system.model;
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class DoctorSchedule {
@@ -8,11 +10,11 @@ public class DoctorSchedule {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name= "Doctor_id")
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
     private LocalDate date;
-    private String startTime;
+    private LocalTime startTime;
     private int maxCount;
     private int bookedCount;
 
@@ -40,11 +42,11 @@ public class DoctorSchedule {
         this.date = date;
     }
 
-    public String getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 

@@ -1,8 +1,6 @@
 package com.hospital.hospital_appointment_system.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
+import jakarta.persistence.*;
 
 @Entity
 public class Appointment {
@@ -10,14 +8,17 @@ public class Appointment {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name ="patient_id")
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     @ManyToOne
     @JoinColumn(name = "schedule_id")
     private DoctorSchedule doctorSchedule;
+
     private int queueNumber;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status;
 
     public String getId() {
         return id;
@@ -51,11 +52,11 @@ public class Appointment {
         this.queueNumber = queueNumber;
     }
 
-    public String getStatus() {
+    public AppointmentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(AppointmentStatus status) {
         this.status = status;
     }
 }
