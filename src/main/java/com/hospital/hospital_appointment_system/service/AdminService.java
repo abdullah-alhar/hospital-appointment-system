@@ -34,8 +34,28 @@ public class AdminService {
                 .orElseThrow(() -> new IllegalArgumentException("Admin not found: " + id));
     }
 
+    public Admin getAdminByUsername(String username) {
+        return adminRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("Admin not found: " + username));
+    }
+
     public void deleteAdmin(String id) {
         adminRepository.delete(getAdminById(id));
+    }
+
+    public Admin updateAdmin(String id, String username) {
+        Admin admin = getAdminById(id);
+        admin.setUsername(username);
+        return adminRepository.save(admin);
+    }
+
+    public Admin updatePassword(String id, String oldPassword, String newPassword) {
+        Admin admin = getAdminById(id);
+        if (!admin.getPassword().equals(oldPassword)) {
+            throw new IllegalArgumentException("Current password is incorrect.");
+        }
+        admin.setPassword(newPassword);
+        return adminRepository.save(admin);
     }
 
     private String generateNextId() {

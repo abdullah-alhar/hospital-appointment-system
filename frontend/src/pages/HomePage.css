@@ -1,0 +1,668 @@
+/* ══════════════════════════════════════════════════════
+   Landing Page — Layout-specific styles
+   Base tokens & fonts are now in index.css globally.
+   ══════════════════════════════════════════════════════ */
+
+/* ── Scoped overrides for landing page ────────────── */
+.landing {
+  --lp-teal-50: #F0FDFA;
+  --lp-slate-200: #E2E8F0;
+  --lp-slate-300: #CBD5E1;
+  --lp-slate-100: #F1F5F9;
+  --lp-amber-100: #FEF3C7;
+  --lp-green-600: #059669;
+  --lp-green-100: #D1FAE5;
+  --lp-footer-bg: #0F172A;
+
+  background: var(--bg);
+  color: var(--text-secondary);
+  min-height: 100vh;
+  flex: 1;
+}
+
+/* ── Container ────────────────────────────────────── */
+.lp-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Section headers ──────────────────────────────── */
+.lp-section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.lp-section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.85rem;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   NAVBAR
+   ══════════════════════════════════════════════════════ */
+.lp-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247, 249, 251, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.lp-nav .lp-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.lp-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.lp-nav-cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lp-nav-wordmark {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.lp-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lp-nav-link {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.lp-nav-link:hover {
+  color: var(--text);
+  background: var(--lp-slate-100);
+}
+
+.lp-btn-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 1.15rem;
+  background: var(--primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  line-height: 1.4;
+}
+
+.lp-btn-book:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 16px rgba(15, 118, 110, 0.25);
+}
+
+.lp-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.15rem;
+  background: transparent;
+  border: 1px solid var(--lp-slate-300);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  line-height: 1.4;
+}
+
+.lp-btn-secondary:hover {
+  border-color: var(--text-secondary);
+  color: var(--text);
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.lp-hero {
+  padding: 5rem 0 4rem;
+}
+
+.lp-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.lp-hero-text h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3.25rem;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.lp-hero-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+.lp-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.lp-hero-actions .lp-btn-book {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+.lp-hero-actions .lp-btn-secondary {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   QUEUE TICKET
+   ══════════════════════════════════════════════════════ */
+.lp-hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.lp-hero-visual::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(6deg);
+  background: var(--lp-teal-50);
+  border: 1.5px solid rgba(15, 118, 110, 0.08);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.ticket {
+  position: relative;
+  width: 310px;
+  background: var(--bg-elevated);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 3px rgba(15, 23, 42, 0.06),
+    0 8px 32px rgba(15, 23, 42, 0.08),
+    0 24px 56px rgba(15, 23, 42, 0.06);
+  transform: rotate(-2deg);
+  animation: ticketFloat 6s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--lp-slate-200);
+}
+
+.ticket-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+.ticket-brand-cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
+.ticket-id {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.ticket-body {
+  padding: 1.1rem 1.25rem 1rem;
+}
+
+.ticket-doctor {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+}
+
+.ticket-specialty {
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.ticket-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ticket-detail-label {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.ticket-detail-value {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ticket-patient {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--lp-slate-100);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.ticket-patient-id {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.ticket-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.65rem;
+  background: var(--lp-green-100);
+  color: var(--lp-green-600);
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.ticket-status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--lp-green-600);
+  border-radius: 50%;
+}
+
+/* ── Perforation ──────────────────────────────────── */
+.ticket-perforation {
+  position: relative;
+  height: 1px;
+  border: none;
+  border-top: 2px dashed var(--lp-slate-200);
+}
+
+.ticket-perforation::before,
+.ticket-perforation::after {
+  content: '';
+  position: absolute;
+  top: -11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg);
+}
+.ticket-perforation::before { left: -10px; }
+.ticket-perforation::after  { right: -10px; }
+
+.ticket-queue {
+  padding: 1rem 1.25rem 1.25rem;
+  text-align: center;
+}
+
+.ticket-queue-label {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.ticket-queue-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ══════════════════════════════════════════════════════
+   HOW IT WORKS
+   ══════════════════════════════════════════════════════ */
+.lp-steps {
+  padding: 5rem 0;
+  background: var(--bg-elevated);
+}
+
+.lp-steps-list {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: flex-start;
+  margin-top: 2.5rem;
+}
+
+.lp-step {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.lp-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--lp-teal-50);
+  border: 2px solid var(--primary);
+  font-family: 'Space Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.lp-step h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.lp-step p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.lp-step-connector {
+  display: flex;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.lp-step-connector::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--lp-slate-300) 0,
+    var(--lp-slate-300) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   TRUST / STATS SECTION
+   ══════════════════════════════════════════════════════ */
+.lp-trust {
+  padding: 4rem 0;
+  background: var(--bg);
+}
+
+.lp-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.lp-trust-item {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.lp-trust-item:hover {
+  border-color: rgba(15, 118, 110, 0.2);
+  box-shadow: 0 4px 20px rgba(15, 118, 110, 0.08);
+  transform: translateY(-2px);
+}
+
+.lp-trust-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.25rem;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.lp-trust-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════════════ */
+.lp-footer {
+  background: var(--lp-footer-bg);
+  padding: 2rem 0;
+}
+
+.lp-footer .lp-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.lp-footer-brand .lp-nav-cross {
+  width: 24px;
+  height: 24px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+}
+
+.lp-footer-note {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ══════════════════════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════════════════════ */
+@keyframes ticketFloat {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50%      { transform: rotate(-2deg) translateY(-8px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.lp-hero-text {
+  animation: fadeInUp 0.6s ease both;
+}
+
+.lp-hero-visual {
+  animation: fadeInUp 0.6s ease 0.15s both;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .lp-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .lp-hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .lp-hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .lp-hero-actions {
+    justify-content: center;
+  }
+
+  .lp-hero-visual {
+    order: -1;
+  }
+
+  .lp-steps-list {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .lp-step-connector {
+    display: none;
+  }
+
+  .lp-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .lp-container {
+    padding: 0 1.25rem;
+  }
+
+  .lp-hero {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .lp-hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .lp-steps,
+  .lp-trust {
+    padding: 3rem 0;
+  }
+
+  .lp-nav-link {
+    display: none;
+  }
+
+  .lp-footer .lp-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .lp-trust-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket {
+    animation: none;
+    transform: rotate(-2deg);
+  }
+  .lp-hero-text,
+  .lp-hero-visual {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
