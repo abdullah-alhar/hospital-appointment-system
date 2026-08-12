@@ -35,6 +35,11 @@ public class DoctorService {
                 .orElseThrow(() -> new IllegalArgumentException("Doctor not found: " + id));
     }
 
+    public Doctor getDoctorByUsername(String username) {
+        return doctorRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("Doctor not found: " + username));
+    }
+
     public Doctor updateDoctor(String id, String username, String specialization) {
         Doctor doctor = getDoctorById(id);
         doctor.setUsername(username);
@@ -44,6 +49,15 @@ public class DoctorService {
 
     public void deleteDoctor(String id) {
         doctorRepository.delete(getDoctorById(id));
+    }
+
+    public Doctor updatePassword(String id, String oldPassword, String newPassword) {
+        Doctor doctor = getDoctorById(id);
+        if (!doctor.getPassword().equals(oldPassword)) {
+            throw new IllegalArgumentException("Current password is incorrect.");
+        }
+        doctor.setPassword(newPassword);
+        return doctorRepository.save(doctor);
     }
 
     private String generateNextId() {

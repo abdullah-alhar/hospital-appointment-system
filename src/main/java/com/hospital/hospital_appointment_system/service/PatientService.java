@@ -35,10 +35,24 @@ public class PatientService {
                 .orElseThrow(() -> new IllegalArgumentException("Patient not found: " + id));
     }
 
+    public Patient getPatientByUsername(String username) {
+        return patientRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("Patient not found: " + username));
+    }
+
     public Patient updatePatient(String id, String username, String bloodGroup) {
         Patient patient = getPatientById(id);
         patient.setUsername(username);
         patient.setBloodGroup(bloodGroup);
+        return patientRepository.save(patient);
+    }
+
+    public Patient updatePassword(String id, String oldPassword, String newPassword) {
+        Patient patient = getPatientById(id);
+        if (!patient.getPassword().equals(oldPassword)) {
+            throw new IllegalArgumentException("Current password is incorrect.");
+        }
+        patient.setPassword(newPassword);
         return patientRepository.save(patient);
     }
 

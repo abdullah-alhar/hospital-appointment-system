@@ -1,12 +1,14 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-import Navbar from './components/Navbar';
+import { ToastProvider } from './components/Toast';
+import DashboardLayout from './components/DashboardLayout';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
 
 // Patient pages
 import BrowseSchedulesPage from './pages/patient/BrowseSchedulesPage';
@@ -14,28 +16,27 @@ import MyAppointmentsPage from './pages/patient/MyAppointmentsPage';
 
 // Doctor pages
 import DoctorSchedulesPage from './pages/doctor/DoctorSchedulesPage';
-import CreateSchedulePage from './pages/doctor/CreateSchedulePage';
 
 // Admin pages
 import AdminPatientsPage from './pages/admin/AdminPatientsPage';
 import AdminDoctorsPage from './pages/admin/AdminDoctorsPage';
 import AdminAdminsPage from './pages/admin/AdminAdminsPage';
 import AdminAppointmentsPage from './pages/admin/AdminAppointmentsPage';
+import AdminSchedulesPage from './pages/admin/AdminSchedulesPage';
 
 function AppShell() {
-  const location = useLocation();
-  const isLanding = location.pathname === '/';
-
-  return (
-    <>
-      {/* Landing page has its own embedded nav — hide the global dark one */}
-      {!isLanding && <Navbar />}
-
+  // Routes wrapped in DashboardLayout
+  const dashboardRoutes = (
+    <DashboardLayout>
       <Routes>
-        {/* Public */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute roles={['PATIENT', 'DOCTOR', 'ADMIN']}>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Patient routes */}
         <Route
@@ -61,14 +62,6 @@ function AppShell() {
           element={
             <ProtectedRoute roles={['DOCTOR']}>
               <DoctorSchedulesPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/doctor/schedules/new"
-          element={
-            <ProtectedRoute roles={['DOCTOR']}>
-              <CreateSchedulePage />
             </ProtectedRoute>
           }
         />
@@ -99,6 +92,14 @@ function AppShell() {
           }
         />
         <Route
+          path="/admin/schedules"
+          element={
+            <ProtectedRoute roles={['ADMIN']}>
+              <AdminSchedulesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/admin/appointments"
           element={
             <ProtectedRoute roles={['ADMIN']}>
@@ -106,11 +107,18 @@ function AppShell() {
             </ProtectedRoute>
           }
         />
-
-        {/* Catch-all */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </>
+    </DashboardLayout>
+  );
+
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="*" element={dashboardRoutes} />
+    </Routes>
   );
 }
 
@@ -118,7 +126,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <AppShell />
+        <ToastProvider>
+          <AppShell />
+        </ToastProvider>
       </AuthProvider>
     </BrowserRouter>
   );
